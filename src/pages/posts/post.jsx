@@ -2,7 +2,11 @@
 import { Box, Container, Typography } from "@mui/material";
 import PostActions from "../../components/posts/postActions";
 import Comments from "../comments/comments";
-import { useGetPostQuery, useGetPostsQuery } from "../../store/posts.slice";
+import {
+  useGetCommentsQuery,
+  useGetPostQuery,
+  useGetPostsQuery,
+} from "../../store/posts.slice";
 import { useLocation } from "react-router-dom";
 import PostMetrics from "../../components/posts/postMetrics";
 import Loader from "../../components/loader";
@@ -12,10 +16,13 @@ export default function Post() {
   const { post_id } = location.state;
   const { data: post, status: postStatus } = useGetPostQuery(post_id);
   const { status: postsStatus } = useGetPostsQuery(post_id);
+  const { status: commentStatus } = useGetCommentsQuery(post_id);
 
   return (
     <Container>
-      {[postStatus, postsStatus].includes("pending") ? <Loader /> : null}
+      {[postStatus, postsStatus, commentStatus].includes("pending") ? (
+        <Loader />
+      ) : null}
       <Box sx={{ paddingBlock: "3rem" }}>
         {post ? (
           <Box sx={{ display: "flex", gap: "4rem" }}>
