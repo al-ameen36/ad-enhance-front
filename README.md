@@ -1,8 +1,6 @@
-# React + Vite
+# Ad Enhance
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Currently only works when run locally
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Frontend Repo:** [https://github.com/al-ameen36/ad-enhance-front.git](https://github.com/al-ameen36/ad-enhance-front.git)  
+**Backend Repo:** [https://github.com/al-ameen36/ad-enhance-node.git](https://github.com/al-ameen36/ad-enhance-node.git)
