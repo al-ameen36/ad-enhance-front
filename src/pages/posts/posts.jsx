@@ -1,6 +1,10 @@
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useAddPostMutation, useGetPostsQuery } from "../../store/posts.slice";
+import {
+  useAddPostMutation,
+  useDeletePostMutation,
+  useGetPostsQuery,
+} from "../../store/posts.slice";
 import { Link } from "react-router-dom";
 import { FaTrash } from "react-icons/fa6";
 
@@ -8,10 +12,11 @@ export default function Posts() {
   const [formData, setFormData] = useState({ post: "" });
   const { data, refetch } = useGetPostsQuery();
   const [addTrigger, addResult] = useAddPostMutation();
+  const [deleteTrigger, deleteResult] = useDeletePostMutation();
 
   useEffect(() => {
     refetch();
-  }, [addResult]);
+  }, [addResult, deleteResult]);
   function handleFormSubmit() {
     if (formData.post !== "") {
       addTrigger({ user_id: 2, content: formData.post });
@@ -23,7 +28,7 @@ export default function Posts() {
   }
 
   function handleDelete(post_id) {
-    console.log(post_id);
+    deleteTrigger(post_id);
   }
 
   let postElements = data?.posts.map((p) => (
@@ -40,7 +45,7 @@ export default function Posts() {
         sx={{ marginBlockStart: "1rem" }}
         variant="contained"
       >
-        <FaTrash />{" "}
+        <FaTrash />
       </Button>
     </Box>
   ));

@@ -7,6 +7,9 @@ export const postsApi = createApi({
     getPosts: builder.query({
       query: () => `/posts`,
     }),
+    getPost: builder.query({
+      query: (post_id) => `/post/${post_id}`,
+    }),
     addPost: builder.mutation({
       query: (values) => ({
         url: `/posts/add`,
@@ -15,7 +18,18 @@ export const postsApi = createApi({
         body: values,
       }),
     }),
+    deletePost: builder.mutation({
+      query: (post_id) => ({
+        url: `/post/${post_id}/delete`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useGetPostsQuery, useAddPostMutation } = postsApi;
+export const {
+  useGetPostsQuery,
+  useAddPostMutation,
+  useDeletePostMutation,
+  useGetPostQuery,
+} = postsApi;
