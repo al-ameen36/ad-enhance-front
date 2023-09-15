@@ -1,15 +1,21 @@
-import { Container, Typography } from "@mui/material";
-import { Box } from "@mui/system";
-import { useLocation } from "react-router";
-import { useGetPostQuery } from "../../store/posts.slice";
+/* eslint-disable react/prop-types */
+import { Box, Container, Typography } from "@mui/material";
+import PostActions from "../../components/posts/postActions";
+import Comments from "../comments/comments";
+import { useGetPostQuery, useGetPostsQuery } from "../../store/posts.slice";
+import { useLocation } from "react-router-dom";
+import PostMetrics from "../../components/posts/postMetrics";
+import Loader from "../../components/loader";
 
 export default function Post() {
   const location = useLocation();
   const { post_id } = location.state;
   const { data: post, status: postStatus } = useGetPostQuery(post_id);
+  const { status: postsStatus } = useGetPostsQuery(post_id);
 
   return (
     <Container>
+      {[postStatus, postsStatus].includes("pending") ? <Loader /> : null}
       <Box sx={{ paddingBlock: "3rem" }}>
         {post ? (
           <Box sx={{ display: "flex", gap: "4rem" }}>
@@ -21,7 +27,10 @@ export default function Post() {
               <Typography variant="h6" sx={{ maxWidth: "600px" }}>
                 {post.post.content}
               </Typography>
+              <PostActions />
+              <Comments />
             </Box>
+            <PostMetrics />
           </Box>
         ) : null}
       </Box>
