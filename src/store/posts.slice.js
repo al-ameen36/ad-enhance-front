@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const url = import.meta.env.PROD ? import.meta.env.VITE_SERVER_URL : null;
+const url = import.meta.env.PROD
+  ? "https://ad-enhance-node.onrender.com"
+  : null;
 export const postsApi = createApi({
   reducerPath: "postsApi",
   baseQuery: fetchBaseQuery({
