@@ -1,16 +1,14 @@
 # Ad Enhance
 
-Due to some technical issues the hosted version of this project doesn't work, but it works when run locally.
+Ad Enhance is an innovative solution designed to empower advertisers and marketers in the digital advertising landscape. This software harnesses the power of artificial intelligence to address common challenges faced in creating, managing, and optimizing ad campaigns.
 
 **Frontend Repo:** https://github.com/al-ameen36/ad-enhance-front.git
-
 **Backend Repo:** https://github.com/al-ameen36/ad-enhance-node.git
 
-**Hosted Frontend URL:** https://ad-enhance-front.vercel.app/
+**Live URL:** https://ad-enhance-front.vercel.app/
+_Note:_ This is just a simulation of how it would work on a real social media post
 
-**Hosted Backend URL:** https://ad-enhance-node.onrender.com
-
-## How run project
+## How run project locally
 
 1. Clone repo `git clone https://github.com/al-ameen36/ad-enhance-front.git`
 2. Install node dependencies `npm install`
